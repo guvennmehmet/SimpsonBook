@@ -11,6 +11,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     
+    var mySimpsons = [Simpson]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,17 +31,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
         let maggie = Simpson(simpsonName: "Maggie Simpson", simpsonJob: "Baby", simpsonImage: UIImage(named: "maggie")!)
                 
-        let homerArray = [homer, marge, bart, lisa, maggie]
+        mySimpsons.append(homer)
+        mySimpsons.append(marge)
+        mySimpsons.append(bart)
+        mySimpsons.append(lisa)
+        mySimpsons.append(maggie)
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return mySimpsons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = "Homer Simpson"
+        cell.textLabel?.text = mySimpsons[indexPath.row].name
         return cell
     }
 
